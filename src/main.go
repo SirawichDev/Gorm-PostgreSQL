@@ -1,18 +1,12 @@
 package main
 
 import (
+	"github.com/CRUD-Gin-Gorm/Models"
 	"github.com/jinzhu/gorm"
 	_ "github.com/lib/pq"
 )
 
 var err error
-
-type User struct {
-	ID        uint
-	Username  string
-	FirstName string
-	LastName  string
-}
 
 func main() {
 	db, err := gorm.Open("postgres", "user=sirawich dbname=booker sslmode=disable")
@@ -29,13 +23,14 @@ func main() {
 		panic(err.Error())
 	}
 	println("Connection to database established")
-	db.CreateTable(&User{})
-	user := User{
-		Username:  "sirawit0676",
-		FirstName: "Sirawich",
-		LastName:  "Vougnchuy",
+	User := &Models.User{}
+	db.CreateTable(User)
+	user := &Models.User{
+		Uname:    "sirawit0676",
+		Password: "1w2e3r4t5y",
+		NickName: "Ex",
 	}
-	db.Create(&user)
+	db.Create(user)
 
 	println("Done!")
 }
