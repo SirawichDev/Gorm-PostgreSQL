@@ -30,6 +30,12 @@ func main() {
 	}
 	println("Connection to database established")
 	db.CreateTable(&User{})
+	user := User{
+		Username:  "sirawit0676",
+		FirstName: "Sirawich",
+		LastName:  "Vougnchuy",
+	}
+	db.Create(&user)
 
 	println("Done!")
 }
