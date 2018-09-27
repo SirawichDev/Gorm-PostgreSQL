@@ -12,8 +12,10 @@ var err error
 
 //Data sample
 var users []Models.User = []Models.User{
-	Models.User{Uname: "x1", Password: "1234", NickName: "xx"},
-	Models.User{Uname: "x2", Password: "3241", NickName: "xxx"},
+	Models.User{Uname: "Sirawih", Password: "1234", NickName: "Ex"},
+	Models.User{Uname: "Huzen", Password: "3241", NickName: "Sainee"},
+	Models.User{Uname: "Punupong", Password: "1w2e3r", NickName: "Tar"},
+	Models.User{Uname: "Chakrit", Password: "3e4r5y", NickName: "Him"},
 }
 
 func main() {
@@ -41,11 +43,20 @@ func main() {
 	// 	Password: "1w2e3r4t5y",
 	// 	NickName: "Ex",
 	// }
-	u := Models.User{}
+	// u := Models.User{}
+
+	//update
+	u := Models.User{NickName: "Ex"}
+	db.Where(&u).First(&u)
+	fmt.Println(u)
+
+	u.Uname = "Sirawich"
+	db.Save(&u)
 	//show first data in table
 	// db.First(&u)
-	//show last data intable
-	db.Last(&u)
+	//show last data int table
+	// db.Last(&u)
 	fmt.Println(u)
 	println("Done!")
+
 }
