@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/CRUD-Gin-Gorm/Models"
 	"github.com/jinzhu/gorm"
 	_ "github.com/lib/pq"
@@ -12,10 +10,10 @@ var err error
 
 //Data sample
 var users []Models.User = []Models.User{
-	Models.User{Uname: "Sirawih", Password: "1234", NickName: "Ex"},
-	Models.User{Uname: "Huzen", Password: "3241", NickName: "Sainee"},
-	Models.User{Uname: "Punupong", Password: "1w2e3r", NickName: "Tar"},
-	Models.User{Uname: "Chakrit", Password: "3e4r5y", NickName: "Him"},
+	Models.User{FirstName: "Sirawih", LastName: "Voungchuy", PetName: "Garfiled"},
+	Models.User{FirstName: "Samon", LastName: "Miew", PetName: "jimmy"},
+	Models.User{FirstName: "Kann", LastName: "naruuu", PetName: "kanuu"},
+	Models.User{FirstName: "Kob", LastName: "boob", PetName: "Bonny"},
 }
 
 func main() {
@@ -50,11 +48,11 @@ func main() {
 	// u := Models.User{}
 
 	//update
-	u := Models.User{NickName: "Ex"}
-	db.Where(&u).First(&u)
-	fmt.Println(u)
-	u.Uname = "Sirawich"
-	db.Save(&u)
+	// u := Models.User{NickName: "Ex"}
+	// db.Where(&u).First(&u)
+	// fmt.Println(u)
+	// u.Uname = "Sirawich"
+	// db.Save(&u)
 
 	//Delete
 	// db.Where(&Models.User{Uname: "Huzen"}).Delete(&Models.User{})
@@ -65,7 +63,7 @@ func main() {
 	//show last data int table
 	// db.Last(&u)
 
-	fmt.Println(u)
+	// fmt.Println(u)
 	println("Done!")
 
 }
