@@ -36,9 +36,9 @@ func main() {
 	println("Connection to database established")
 	db.CreateTable(&Models.User{})
 	//Loop Create
-	// for _, users := range users {
-	// 	db.Create(&users)
-	// }
+	for _, users := range users {
+		db.Create(&users)
+	}
 
 	//single create
 	// user := &Models.User{
@@ -57,7 +57,7 @@ func main() {
 	db.Save(&u)
 
 	//Delete
-	db.Where(&Models.User{Uname: "Huzen"}).Delete(&Models.User{})
+	// db.Where(&Models.User{Uname: "Huzen"}).Delete(&Models.User{})
 
 	//show first data in table
 	// db.First(&u)
