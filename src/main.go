@@ -48,23 +48,25 @@ func main() {
 	// 	NickName: "Ex",
 	// }
 
-	u := []Models.User{}
+	// u := []Models.User{}
 
 	//update
-	// u := []Models.User{Models.User{FirstName: "Kann"}}
+	u := Models.User{FirstName: "Kann"}
+	Models.Update(&u)
 	// db.Where(&u).First(&u)
 	// fmt.Println(u)
 	// u.Uname = "Sirawich"
 	// db.Save(&u)
 
 	//Delete
+	// Models.Delete(&u)
 	// db.Where(&Models.User{Uname: "Huzen"}).Delete(&Models.User{})
 
 	//show first data in table
 	// Models.GetOne(&u)
 
 	//show last data int table
-	Models.GetOneLast(&u)
+	// Models.GetOneLast(&u)
 
 	fmt.Println(u)
 	println("Done!")

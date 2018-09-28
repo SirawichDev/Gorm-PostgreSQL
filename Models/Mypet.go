@@ -31,3 +31,21 @@ func GetOneLast(u *[]User) (err error) {
 	}
 	return nil
 }
+
+//Delete
+func Delete(u *User) (err error) {
+	err = Config.Db.Where(&u).Delete(&u).Error
+	if err != nil {
+		return err
+	}
+	return nil
+}
+func Update(u *User) (err error) {
+	err = Config.Db.Where(&u).First(&u).Error
+	if err != nil {
+		return err
+	}
+	u.PetName = "monmon"
+	Config.Db.Save(&u)
+	return nil
+}
