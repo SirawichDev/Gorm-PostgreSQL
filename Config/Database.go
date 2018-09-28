@@ -4,4 +4,4 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-var DB *gorm.DB
+var Db *gorm.DB

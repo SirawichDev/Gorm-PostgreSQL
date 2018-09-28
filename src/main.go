@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/CRUD-Gin-Gorm/Config"
 	"github.com/CRUD-Gin-Gorm/Models"
 	"github.com/jinzhu/gorm"
 	_ "github.com/lib/pq"
@@ -17,14 +18,14 @@ var users []Models.User = []Models.User{
 }
 
 func main() {
-	db, err := gorm.Open("postgres", "user=sirawich dbname=booker sslmode=disable")
+	Config.Db, err = gorm.Open("postgres", "user=sirawich dbname=booker sslmode=disable")
 	if err != nil {
 		panic(err)
 	}
 
-	defer db.Close()
+	defer Config.Db.Close()
 
-	dbase := db.DB()
+	dbase := Config.Db.DB()
 	defer dbase.Close()
 
 	err = dbase.Ping()
@@ -32,10 +33,10 @@ func main() {
 		panic(err.Error())
 	}
 	println("Connection to database established")
-	db.CreateTable(&Models.User{})
+	Config.Db.CreateTable(&Models.User{})
 	//Loop Create
 	for _, users := range users {
-		db.Create(&users)
+		Db.Create(&users)
 	}
 
 	//single create
