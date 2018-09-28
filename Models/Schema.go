@@ -7,9 +7,9 @@ import (
 //User table
 type User struct {
 	gorm.Model
-	FirstName string `json:",Fname"`
-	LastName  string `json:",Lname"`
-	PetName   string `json:",Pname"`
+	FirstName string
+	LastName  string
+	PetName   string
 }
 
 //TableName Create User struct with another name

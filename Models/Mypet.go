@@ -6,10 +6,21 @@ import (
 )
 
 //CreateUser of Table
-func CreateUser(u *[]User) (err error) {
+func CreateUser(u *User) (err error) {
 	err = Config.Db.Create(&u).Error
 	if err != nil {
 		return err
 	}
 	return nil
 }
+
+//GetOneFirst
+func GetOneFirst(u *[]User) (err error) {
+	err = Config.Db.Where(&u).First(&u).Error
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+// func GetOneLast(u *[]User) (err err)

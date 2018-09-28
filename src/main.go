@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/CRUD-Gin-Gorm/Config"
 	"github.com/CRUD-Gin-Gorm/Models"
 	"github.com/jinzhu/gorm"
@@ -10,7 +12,7 @@ import (
 var err error
 
 //Data sample
-var users []Models.User = []Models.User{
+var users = []Models.User{
 	Models.User{FirstName: "Sirawih", LastName: "Voungchuy", PetName: "Garfiled"},
 	Models.User{FirstName: "Samon", LastName: "Miew", PetName: "jimmy"},
 	Models.User{FirstName: "Kann", LastName: "naruuu", PetName: "kanuu"},
@@ -36,7 +38,7 @@ func main() {
 	Config.Db.CreateTable(&Models.User{})
 	//Loop Create
 	for _, users := range users {
-		Db.Create(&users)
+		Models.CreateUser(&users)
 	}
 
 	//single create
@@ -46,10 +48,10 @@ func main() {
 	// 	NickName: "Ex",
 	// }
 
-	// u := Models.User{}
+	u := []Models.User{}
 
 	//update
-	// u := Models.User{NickName: "Ex"}
+	// u := []Models.User{Models.User{FirstName: "Kann"}}
 	// db.Where(&u).First(&u)
 	// fmt.Println(u)
 	// u.Uname = "Sirawich"
@@ -59,12 +61,12 @@ func main() {
 	// db.Where(&Models.User{Uname: "Huzen"}).Delete(&Models.User{})
 
 	//show first data in table
-	// db.First(&u)
+	Models.GetOne(&u)
 
 	//show last data int table
 	// db.Last(&u)
 
-	// fmt.Println(u)
+	fmt.Println(u)
 	println("Done!")
 
 }
