@@ -61,10 +61,10 @@ func main() {
 	// db.Where(&Models.User{Uname: "Huzen"}).Delete(&Models.User{})
 
 	//show first data in table
-	Models.GetOne(&u)
+	// Models.GetOne(&u)
 
 	//show last data int table
-	// db.Last(&u)
+	Models.GetOneLast(&u)
 
 	fmt.Println(u)
 	println("Done!")

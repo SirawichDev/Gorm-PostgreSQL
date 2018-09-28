@@ -23,4 +23,11 @@ func GetOneFirst(u *[]User) (err error) {
 	return nil
 }
 
-// func GetOneLast(u *[]User) (err err)
+//GetOneLast
+func GetOneLast(u *[]User) (err error) {
+	err = Config.Db.Where(&u).Last(&u).Error
+	if err != nil {
+		return err
+	}
+	return nil
+}
