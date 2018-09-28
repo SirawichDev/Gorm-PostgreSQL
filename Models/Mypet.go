@@ -21,6 +21,15 @@ func CreateUser(u *User) (err error) {
 	return nil
 }
 
+//GetAllUser
+func GetAllUser(u *[]User) (err error) {
+	err = Config.Db.Where(&u).Error
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
 //GetOneFirst Get data At first of record
 func GetOneFirst(u *[]User) (err error) {
 	err = Config.Db.Where(&u).First(&u).Error
