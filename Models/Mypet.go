@@ -5,6 +5,13 @@ import (
 	_ "github.com/lib/pq"
 )
 
+//single create
+// user := &Models.User{
+// 	Uname:    "sirawit0676",
+// 	Password: "1w2e3r4t5y",
+// 	NickName: "Ex",
+// }
+
 //CreateUser of Table
 func CreateUser(u *User) (err error) {
 	err = Config.Db.Create(&u).Error
@@ -14,7 +21,7 @@ func CreateUser(u *User) (err error) {
 	return nil
 }
 
-//GetOneFirst
+//GetOneFirst Get data At first of record
 func GetOneFirst(u *[]User) (err error) {
 	err = Config.Db.Where(&u).First(&u).Error
 	if err != nil {
@@ -23,7 +30,7 @@ func GetOneFirst(u *[]User) (err error) {
 	return nil
 }
 
-//GetOneLast
+//GetOneLast Get data At last of record
 func GetOneLast(u *[]User) (err error) {
 	err = Config.Db.Where(&u).Last(&u).Error
 	if err != nil {
@@ -32,7 +39,7 @@ func GetOneLast(u *[]User) (err error) {
 	return nil
 }
 
-//Delete
+//Delete Data
 func Delete(u *User) (err error) {
 	err = Config.Db.Where(&u).Delete(&u).Error
 	if err != nil {
@@ -40,6 +47,8 @@ func Delete(u *User) (err error) {
 	}
 	return nil
 }
+
+//Update Data
 func Update(u *User) (err error) {
 	err = Config.Db.Where(&u).First(&u).Error
 	if err != nil {

@@ -41,13 +41,6 @@ func main() {
 		Models.CreateUser(&users)
 	}
 
-	//single create
-	// user := &Models.User{
-	// 	Uname:    "sirawit0676",
-	// 	Password: "1w2e3r4t5y",
-	// 	NickName: "Ex",
-	// }
-
 	// u := []Models.User{}
 
 	//update
