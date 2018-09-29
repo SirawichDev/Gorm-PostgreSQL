@@ -14,7 +14,7 @@ import (
 
 //CreateUser of Table
 func CreateUser(u *User) (err error) {
-	err = Config.Db.Create(&u).Error
+	err = Config.Db.Create(u).Error
 	if err != nil {
 		return err
 	}
@@ -23,7 +23,7 @@ func CreateUser(u *User) (err error) {
 
 //GetAllUser
 func GetAllUser(u *[]User) (err error) {
-	err = Config.Db.Where(&u).Error
+	err = Config.Db.Find(u).Error
 	if err != nil {
 		return err
 	}
@@ -32,7 +32,7 @@ func GetAllUser(u *[]User) (err error) {
 
 //GetOneFirst Get data At first of record
 func GetOneFirst(u *[]User) (err error) {
-	err = Config.Db.Where(&u).First(&u).Error
+	err = Config.Db.Where(u).First(u).Error
 	if err != nil {
 		return err
 	}
@@ -41,7 +41,7 @@ func GetOneFirst(u *[]User) (err error) {
 
 //GetOneLast Get data At last of record
 func GetOneLast(u *[]User) (err error) {
-	err = Config.Db.Where(&u).Last(&u).Error
+	err = Config.Db.Where(u).Last(u).Error
 	if err != nil {
 		return err
 	}
@@ -50,7 +50,7 @@ func GetOneLast(u *[]User) (err error) {
 
 //Delete Data
 func Delete(u *User) (err error) {
-	err = Config.Db.Where(&u).Delete(&u).Error
+	err = Config.Db.Where(u).Delete(u).Error
 	if err != nil {
 		return err
 	}
@@ -59,7 +59,7 @@ func Delete(u *User) (err error) {
 
 //Update Data
 func Update(u *User) (err error) {
-	err = Config.Db.Where(&u).First(&u).Error
+	err = Config.Db.Where(u).First(u).Error
 	if err != nil {
 		return err
 	}

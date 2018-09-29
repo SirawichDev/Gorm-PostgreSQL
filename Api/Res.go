@@ -6,14 +6,16 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+//Res Data Struct
 type ResponseData struct {
 	Status int
 	Meta   interface{}
 	Data   interface{}
 }
 
+//Res For response req
 func Res(w *gin.Context, status int, payload interface{}) {
-	fmt.Print("status", status)
+	fmt.Println("status", status)
 	var res ResponseData
 	res.Status = status
 	res.Data = payload

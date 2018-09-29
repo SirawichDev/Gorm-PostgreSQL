@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"github.com/CRUD-Gin-Gorm/Route"
 
 	"github.com/CRUD-Gin-Gorm/Config"
 	"github.com/CRUD-Gin-Gorm/Models"
@@ -35,17 +35,17 @@ func main() {
 		panic(err.Error())
 	}
 	println("Connection to database established")
-	Config.Db.CreateTable(&Models.User{})
+	// Config.Db.CreateTable(&Models.User{})
 	//Loop Create
-	for _, users := range users {
-		Models.CreateUser(&users)
-	}
+	// for _, users := range users {
+	// 	Models.CreateUser(&users)
+	// }
 
 	// u := []Models.User{}
 
 	//update
-	u := Models.User{FirstName: "Kann"}
-	Models.Update(&u)
+	// u := Models.User{FirstName: "Kann"}
+	// Models.Update(&u)
 	// db.Where(&u).First(&u)
 	// fmt.Println(u)
 	// u.Uname = "Sirawich"
@@ -61,7 +61,9 @@ func main() {
 	//show last data int table
 	// Models.GetOneLast(&u)
 
-	fmt.Println(u)
+	// fmt.Println(u)
 	println("Done!")
+	r := Route.InitRouter()
+	r.Run()
 
 }
