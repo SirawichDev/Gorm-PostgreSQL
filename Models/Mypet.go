@@ -60,11 +60,8 @@ func GetOneLast(u *[]User) (err error) {
 }
 
 //Delete Data
-func Delete(u *User) (err error) {
-	err = Config.Db.Where(u).Delete(u).Error
-	if err != nil {
-		return err
-	}
+func Delete(u *User, id string) (err error) {
+	Config.Db.Where(id).Delete(u)
 	return nil
 }
 

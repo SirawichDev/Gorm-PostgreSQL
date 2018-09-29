@@ -8,6 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+//AllUser Show All User in database
 func AllUser(c *gin.Context) {
 	u := []Models.User{}
 	err := Models.GetAllUser(&u)
@@ -34,6 +35,7 @@ func CreateUser(c *gin.Context) {
 	}
 }
 
+//SampleUser make sample data to database
 func SampleUser(c *gin.Context) {
 	var users []Models.User = []Models.User{
 		Models.User{FirstName: "sorawat", LastName: "yo", PetName: "ramzy"},
@@ -51,6 +53,8 @@ func SampleUser(c *gin.Context) {
 		}
 	}
 }
+
+//GetOneUser get user data
 func GetOneUser(c *gin.Context) {
 	var users Models.User
 	id := c.Params.ByName("id")
@@ -63,6 +67,7 @@ func GetOneUser(c *gin.Context) {
 	}
 }
 
+//Update User data
 func UpdateUser(c *gin.Context) {
 	users := Models.User{}
 	id := c.Params.ByName("id")
@@ -72,10 +77,23 @@ func UpdateUser(c *gin.Context) {
 		Api.Res(c, 404, users)
 	}
 	c.BindJSON(&users)
+	//fmt.Println("From JSON to Struct", reflect.TypeOf(users))
 	err = Models.Update(&users, id)
 	if err != nil {
 		Api.Res(c, 404, users)
 	} else {
+		Api.Res(c, 200, users)
+	}
+}
+
+//Delete data from database
+func Deleter(c *gin.Context) {
+	var users Models.User
+	id := c.Params.ByName("id")
+	err := Models.Delete(&users, id)
+	if err != nil {
 		Api.Res(c, 404, users)
+	} else {
+		Api.Res(c, 200, users)
 	}
 }

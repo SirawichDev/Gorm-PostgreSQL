@@ -15,6 +15,7 @@ func InitRouter() *gin.Engine {
 		v1.POST("Sample", Controllers.SampleUser)
 		v1.GET("User/:id", Controllers.GetOneUser)
 		v1.PUT("User/:id", Controllers.UpdateUser)
+		v1.DELETE("User/:id", Controllers.Deleter)
 	}
 	return r
 }
