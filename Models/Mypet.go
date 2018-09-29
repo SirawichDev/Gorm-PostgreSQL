@@ -1,6 +1,8 @@
 package Models
 
 import (
+	"fmt"
+
 	"github.com/CRUD-Gin-Gorm/Config"
 	_ "github.com/lib/pq"
 )
@@ -67,12 +69,8 @@ func Delete(u *User) (err error) {
 }
 
 //Update Data
-func Update(u *User) (err error) {
-	err = Config.Db.Where(u).First(u).Error
-	if err != nil {
-		return err
-	}
-	u.PetName = "monmon"
+func Update(u *User, id string) (err error) {
+	fmt.Println(u)
 	Config.Db.Save(&u)
 	return nil
 }

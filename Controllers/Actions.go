@@ -21,9 +21,9 @@ func AllUser(c *gin.Context) {
 }
 func CreateUser(c *gin.Context) {
 	user := Models.User{}
-	user.FirstName = c.PostForm("fname")
-	user.LastName = c.PostForm("lname")
-	user.PetName = c.PostForm("pname")
+	// user.FirstName = c.PostForm("fname")
+	// user.LastName = c.PostForm("lname")
+	// user.PetName = c.PostForm("pname")
 	c.BindJSON(&user)
 	fmt.Printf("%v", user)
 	err := Models.CreateUser(&user)
@@ -55,6 +55,7 @@ func GetOneUser(c *gin.Context) {
 	var users Models.User
 	id := c.Params.ByName("id")
 	err := Models.GetOne(&users, id)
+	fmt.Println(users)
 	if err != nil {
 		Api.Res(c, 404, users)
 	} else {
@@ -62,8 +63,19 @@ func GetOneUser(c *gin.Context) {
 	}
 }
 
-// func UpdateUser(c *gin.Context) {
-// 	var users Models.User
-// 	id := c.Params.ByName("id")
-// 	err := Mo
-// }
+func UpdateUser(c *gin.Context) {
+	users := Models.User{}
+	id := c.Params.ByName("id")
+	err := Models.GetOne(&users, id)
+	fmt.Println(users.FirstName)
+	if err != nil {
+		Api.Res(c, 404, users)
+	}
+	c.BindJSON(&users)
+	err = Models.Update(&users, id)
+	if err != nil {
+		Api.Res(c, 404, users)
+	} else {
+		Api.Res(c, 404, users)
+	}
+}
