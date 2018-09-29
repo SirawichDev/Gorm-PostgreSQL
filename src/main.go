@@ -36,10 +36,6 @@ func main() {
 	}
 	println("Connection to database established")
 	// Config.Db.CreateTable(&Models.User{})
-	//Loop Create
-	// for _, users := range users {
-	// 	Models.CreateUser(&users)
-	// }
 
 	// u := []Models.User{}
 

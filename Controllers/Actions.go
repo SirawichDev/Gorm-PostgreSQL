@@ -32,5 +32,38 @@ func CreateUser(c *gin.Context) {
 	} else {
 		Api.Res(c, 200, user)
 	}
-
 }
+
+func SampleUser(c *gin.Context) {
+	var users []Models.User = []Models.User{
+		Models.User{FirstName: "sorawat", LastName: "yo", PetName: "ramzy"},
+		Models.User{FirstName: "salamut", LastName: "jo", PetName: "fozy"},
+		Models.User{FirstName: "muzu", LastName: "ko", PetName: "loly"},
+		Models.User{FirstName: "zuyu", LastName: "lo", PetName: "maly"},
+	}
+	c.BindJSON(&users)
+	for _, users := range users {
+		err := Models.CreateUser(&users)
+		if err != nil {
+			Api.Res(c, 404, users)
+		} else {
+			Api.Res(c, 404, users)
+		}
+	}
+}
+func GetOneUser(c *gin.Context) {
+	var users Models.User
+	id := c.Params.ByName("id")
+	err := Models.GetOne(&users, id)
+	if err != nil {
+		Api.Res(c, 404, users)
+	} else {
+		Api.Res(c, 200, users)
+	}
+}
+
+// func UpdateUser(c *gin.Context) {
+// 	var users Models.User
+// 	id := c.Params.ByName("id")
+// 	err := Mo
+// }
