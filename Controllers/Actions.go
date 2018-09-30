@@ -10,13 +10,13 @@ import (
 
 //AllUser Show All User in database
 func AllUser(c *gin.Context) {
-	u := []Models.User{}
-	err := Models.GetAllUser(&u)
-	fmt.Println(u)
+	var users []Models.User
+	err := Models.GetAllUser(&users)
+	fmt.Println(users)
 	if err != nil {
-		Api.Res(c, 404, u)
+		Api.Res(c, 404, users)
 	} else {
-		Api.Res(c, 200, u)
+		Api.Res(c, 200, users)
 	}
 
 }

@@ -7,13 +7,6 @@ import (
 	_ "github.com/lib/pq"
 )
 
-//single create
-// user := &Models.User{
-// 	Uname:    "sirawit0676",
-// 	Password: "1w2e3r4t5y",
-// 	NickName: "Ex",
-// }
-
 //CreateUser of Table
 func CreateUser(u *User) (err error) {
 	err = Config.Db.Create(u).Error
